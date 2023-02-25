@@ -45,7 +45,7 @@ GOOGLE_RECAPTCHA_SECRET_KEY = env('GOOGLE_RECAPTCHA_SECRET_KEY')
 # DEBUG = True
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'chessmalaga-production.up.railway.app']
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Configuracion del correo
