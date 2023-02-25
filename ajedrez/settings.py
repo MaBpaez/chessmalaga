@@ -45,15 +45,11 @@ GOOGLE_RECAPTCHA_SECRET_KEY = env('GOOGLE_RECAPTCHA_SECRET_KEY')
 # DEBUG = True
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ALLOWED_HOSTS = ['*']
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Configuracion del correo
-EMAIL_HOST = 'smtp.zoho.eu'
-EMAIL_HOST_USER = 'info@mbsocialweb.net'
-EMAIL_HOST_PASSWORD = 'manjaro2018'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+
 
 # Application definition
 
@@ -160,7 +156,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Media config
 MEDIA_URL = '/media/'
