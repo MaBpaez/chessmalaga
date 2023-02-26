@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'circuitos.apps.CircuitosConfig',
     'core.apps.CoreConfig',
@@ -181,3 +182,12 @@ CKEDITOR_CONFIGS = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dzh99aqno',
+    'API_KEY': '215433941438442',
+    'API_SECRET': 'YzzvkvnzNRKL5G4oo4F9gG1iOyE',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
