@@ -184,10 +184,10 @@ CKEDITOR_CONFIGS = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Cloudinary
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dzh99aqno',
-    'API_KEY': '215433941438442',
-    'API_SECRET': 'YzzvkvnzNRKL5G4oo4F9gG1iOyE',
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dzh99aqno',
+#     'API_KEY': '215433941438442',
+#     'API_SECRET': 'YzzvkvnzNRKL5G4oo4F9gG1iOyE',
+# }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
