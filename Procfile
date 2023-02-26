@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn ajedrez.wsgi
+web: gunicorn ajedrez.wsgi --log-file -
