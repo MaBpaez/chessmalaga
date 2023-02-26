@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 from taggit.managers import TaggableManager
-from cloudinary.models import CloudinaryField
 
 url = "https://onesignal.com/api/v1/notifications"
 
@@ -45,8 +44,7 @@ class Post(models.Model):
         related_name="blog_posts",
     )
 
-    # image = models.ImageField("imagen", upload_to="blog", blank=True, null=True)
-    image = CloudinaryField('imagen', blank=True, null=True)
+    image = models.ImageField("imagen", upload_to="blog", blank=True, null=True)
     body = RichTextUploadingField("contenido")
     categories = models.ManyToManyField(
         Category,
