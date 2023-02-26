@@ -46,7 +46,7 @@ class Post(models.Model):
     )
 
     # image = models.ImageField("imagen", upload_to="blog", blank=True, null=True)
-    image = CloudinaryField('imagen', upload_to="blog", blank=True, null=True)
+    image = CloudinaryField('imagen', blank=True, null=True)
     body = RichTextUploadingField("contenido")
     categories = models.ManyToManyField(
         Category,
