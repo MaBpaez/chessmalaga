@@ -3,14 +3,14 @@ from django.db.models import UniqueConstraint
 from django.utils import timezone
 from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
-
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 class TorneoDiputacion(models.Model):
     title = models.CharField('título', max_length=200)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
 
     # file will be saved to MEDIA_ROOT/pdf/2015/01/30
-    file_pdf = models.FileField('bases', upload_to='pdf/%Y/%m/%d/')
+    file_pdf = models.FileField('bases', upload_to='pdf/%Y/%m/%d/', storage=RawMediaCloudinaryStorage())
     body = RichTextUploadingField('contenido', blank=True)
     image = models.ImageField('imagen', upload_to='torneos', blank=True)
     quantity = models.PositiveIntegerField('aforo')

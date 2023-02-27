@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 
 class Circular(models.Model):
@@ -13,7 +14,7 @@ class Circular(models.Model):
         related_name='get_circulares',
     )
 
-    file_pdf = models.FileField('circulares', upload_to='pdf/%Y/%m/%d/')
+    file_pdf = models.FileField('circulares', upload_to='pdf/%Y/%m/%d/', storage=RawMediaCloudinaryStorage())
     publish = models.DateTimeField('fecha de la circular', default=timezone.now)
     created = models.DateTimeField('fecha de creación', auto_now_add=True)
     updated = models.DateTimeField('fecha de edición', auto_now=True)
