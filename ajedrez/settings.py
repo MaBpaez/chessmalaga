@@ -122,11 +122,11 @@ WSGI_APPLICATION = 'ajedrez.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'ddtxSHsNaWixVU11uEPz',
-        'HOST': 'containers-us-west-108.railway.app',
-        'PORT': '7301'
+        'NAME': env('NAME'),
+        'USER': env('USER'),
+        'PASSWORD': env('PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT')
     }
 }
 
