@@ -65,6 +65,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'circuitos.apps.CircuitosConfig',
     'core.apps.CoreConfig',
     'contacto.apps.ContactoConfig',
