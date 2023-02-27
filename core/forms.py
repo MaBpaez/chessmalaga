@@ -30,8 +30,8 @@ class TournamentRegistrationForm(forms.ModelForm):
                 attrs={
                     "type": "tel",
                     "required": True,
-                    "pattern": "[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}",
-                    "placeholder": "123-45-67-89",
+                    "pattern": "[0-9]{3}[0-9]{3}[0-9]{3}",
+                    "placeholder": "666555333",
                     "class": "form-control",
                 }
             ),
