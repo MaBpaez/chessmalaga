@@ -1,1 +1,2 @@
-web: python manage.py migrate && gunicorn ajedrez.wsgi
+/* web: python manage.py migrate && gunicorn ajedrez.wsgi */
+web: sh railway.sh

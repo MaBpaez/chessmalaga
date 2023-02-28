@@ -10,6 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from .models import TorneoDiputacion, RegistrationTournamentDiputacion
 from .forms import RegistrationTournamentDiputacionForm, LowInTournamentDiputacionForm, SearchForm
+from .tasks import register_created, low_created
 
 
 def circuito_torneos_list(request, tipo_torneo=None, all_tournaments=None, in_progress=None, finished=None):
@@ -125,20 +126,22 @@ def circuito_torneo_detail(request, year, month, day, torneo):
                         messages.info(request, "Baja realizada con éxito.")
                         torneo.quantity = torneo.quantity + 1  # update
                         torneo.save()
-                        message1 = (
-                            "Baja en torneo",
-                            f"Enhorabuena {cd['name']} te has dado de baja en el torneo {torneo.title}",
-                            "info@ajedrezmalaga.org",
-                            [f"{cd['mail']}"],
-                        )
-                        message2 = (
-                            "Baja en torneo",
-                            f"{cd['name']} {cd['surnames']} se ha dado de baja en el torneo {torneo.title}",
-                            "info@ajedrezmalaga.org",
-                            ["admin@ajedrezmalaga.org"],
-                        )
+                        
+                        low_created.delay(cd, torneo.title)
+                        # message1 = (
+                        #     "Baja en torneo",
+                        #     f"Enhorabuena {cd['name']} te has dado de baja en el torneo {torneo.title}",
+                        #     "info@ajedrezmalaga.org",
+                        #     [f"{cd['mail']}"],
+                        # )
+                        # message2 = (
+                        #     "Baja en torneo",
+                        #     f"{cd['name']} {cd['surnames']} se ha dado de baja en el torneo {torneo.title}",
+                        #     "info@ajedrezmalaga.org",
+                        #     ["admin@ajedrezmalaga.org"],
+                        # )
 
-                        send_mass_mail((message1, message2), fail_silently=False)
+                        # send_mass_mail((message1, message2), fail_silently=False)
                         low_form = LowInTournamentDiputacionForm()
                     except ObjectDoesNotExist:
                         messages.error(request, "El usuario no está registrado.")
@@ -179,20 +182,21 @@ def circuito_torneo_detail(request, year, month, day, torneo):
                     # https://docs.djangoproject.com/en/3.2/topics/email/#send-mass-mail
                     cd = form.cleaned_data
 
-                    message1 = (
-                        "Inscripción en torneo",
-                        f"Enhorabuena {cd['name']} te has registrado en el torneo {torneo.title}",
-                        "info@ajedrezmalaga.org",
-                        [f"{cd['mail']}"],
-                    )
-                    message2 = (
-                        "Inscripción en torneo",
-                        f"{cd['name']} {cd['surnames']} se ha registrado en el torneo {torneo.title}",
-                        "info@ajedrezmalaga.org",
-                        ["admin@ajedrezmalaga.org"],
-                    )
+                    register_created.delay(cd, torneo.title)
+                    # message1 = (
+                    #     "Inscripción en torneo",
+                    #     f"Enhorabuena {cd['name']} te has registrado en el torneo {torneo.title}",
+                    #     "info@ajedrezmalaga.org",
+                    #     [f"{cd['mail']}"],
+                    # )
+                    # message2 = (
+                    #     "Inscripción en torneo",
+                    #     f"{cd['name']} {cd['surnames']} se ha registrado en el torneo {torneo.title}",
+                    #     "info@ajedrezmalaga.org",
+                    #     ["admin@ajedrezmalaga.org"],
+                    # )
 
-                    send_mass_mail((message1, message2), fail_silently=False)
+                    # send_mass_mail((message1, message2), fail_silently=False)
 
                     submitted_form = True
                     form = RegistrationTournamentDiputacionForm()  # borrar campos crear form nuevo
