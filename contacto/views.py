@@ -35,7 +35,7 @@ def contact(request):
                         f"Nombre: {cd['nombre']}",
                         f"Correo electrónico: {cd['email']}\nPolítica Privacidad: {cd['politica_privacidad']}\n"
                         f"Mensaje:\n\n{cd['mensaje']}",
-                        "info@mbsocialweb.net",
+                        "ajedrezmalaga@gmail.com",
                         ["bravopaezm.15@gmail.com"],
                     )
                 elif cd['opcion'] == 'S':
@@ -43,7 +43,7 @@ def contact(request):
                         f"Nombre: {cd['nombre']}",
                         f"Correo electrónico: {cd['email']}\nPolítica Privacidad: {cd['politica_privacidad']}\n"
                         f"Mensaje:\n\n{cd['mensaje']}",
-                        "info@mbsocialweb.net",
+                        "ajedrezmalaga@gmail.com",
                         ["py.v3.6.3@gmail.com"],
                     )
                 elif cd['opcion'] == 'A':
@@ -51,7 +51,7 @@ def contact(request):
                         f"Nombre: {cd['nombre']}",
                         f"Correo electrónico: {cd['email']}\nPolítica Privacidad: {cd['politica_privacidad']}\n"
                         f"Mensaje:\n\n{cd['mensaje']}",
-                        "info@mbsocialweb.net",
+                        "ajedrezmalaga@gmail.com",
                         ["bravopaezm.15@gmail.com", "py.v3.6.3@gmail.com"],
                     )
 
